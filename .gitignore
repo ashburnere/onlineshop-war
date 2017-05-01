@@ -3,10 +3,9 @@
 .project
 .settings/
 .apt_generated/
-.factorypath/
-.tern-project/
+.factorypath
+.tern-project
 build/
-webapp/
  
 # Intellij
 .idea/
