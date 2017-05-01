@@ -1,0 +1,21 @@
+# Eclipse
+.classpath
+.project
+.settings/
+.apt_generated/
+.factorypath/
+.tern-project/
+build/
+webapp/
+ 
+# Intellij
+.idea/
+*.iml
+*.iws
+ 
+# Mac
+.DS_Store
+ 
+# Maven
+log/
+target/
