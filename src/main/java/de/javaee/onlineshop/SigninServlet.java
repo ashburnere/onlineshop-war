@@ -54,7 +54,7 @@ public class SigninServlet extends HttpServlet {
 		} else {
 			out.println("E-Mail ("+ cookieMail +") oder Passwort ("+ cookiePassword +") falsch!");
 		}
-		out.println("</body></html>");
+		out.println("OK</body></html>");
 		
 	}
 
