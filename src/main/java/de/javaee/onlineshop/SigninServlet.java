@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import de.javaee.onlineshop.model.Customer;
+
 /**
  * Reads the data from the signin form and checks if a customer for the entered data 
  * exists.
@@ -29,32 +31,36 @@ public class SigninServlet extends HttpServlet {
 		final String password = request.getParameter("password");
 		
 		// create the customer from the session
-//		final Customer customer = (Customer)request.getSession().getAttribute("customer");
+		final Customer customer = (Customer)request.getSession().getAttribute("customer");
 		
 		// read the credentials from the cookies and create the customer
-		String cookieMail = null;
-		String cookiePassword = null;
-		Cookie[] cookies = request.getCookies();
-		for (Cookie c : cookies) {
-			if ("email".equals(c.getName())) {
-				cookieMail = c.getValue();
-			} else if("password".equals(c.getName())) {
-				cookiePassword = c.getValue();
-			}
-			
-			if (cookieMail != null && cookiePassword != null) {
-				break;
-			}
-		}
+//		String cookieMail = null;
+//		String cookiePassword = null;
+//		Cookie[] cookies = request.getCookies();
+//		for (Cookie c : cookies) {
+//			if ("email".equals(c.getName())) {
+//				cookieMail = c.getValue();
+//			} else if("password".equals(c.getName())) {
+//				cookiePassword = c.getValue();
+//			}
+//			
+//			if (cookieMail != null && cookiePassword != null) {
+//				break;
+//			}
+//		}
 
 		final PrintWriter out = response.getWriter();
 		out.println("<!DOCTYPE html>");
 		out.println("<html><body>");
-		if (email.equals(cookieMail) && password.equals(cookiePassword)) {
+		if (customer != null && 
+				email.equals(customer.getEmail()) && 
+				password.equals(customer.getPassword())) 
+		{
+			out.println("Benutzer ist valide!");
 		} else {
-			out.println("E-Mail ("+ cookieMail +") oder Passwort ("+ cookiePassword +") falsch!");
+			out.println("Benutzer ist nicht valide!");
 		}
-		out.println("OK</body></html>");
+		out.println("</body></html>");
 		
 	}
 

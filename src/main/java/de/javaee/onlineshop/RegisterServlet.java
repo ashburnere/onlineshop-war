@@ -9,6 +9,7 @@ import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import de.javaee.onlineshop.model.Customer;
 
@@ -31,18 +32,17 @@ public class RegisterServlet extends HttpServlet {
 		// create a customer object and save it
 		final String email = request.getParameter("email");
 		final String password = request.getParameter("password");
-		
 		final Customer customer = new Customer(email, password);
 		
 		// saves the customer in the session
-//		final HttpSession session = request.getSession();
-//		session.setAttribute("customer", customer);
+		final HttpSession session = request.getSession();
+		session.setAttribute("customer", customer);
 		
 		// saves the customer in a cookie
-		final Cookie customerMail = new Cookie("email", email);
-		response.addCookie(customerMail);
-		final Cookie customerPassword = new Cookie("password", password);
-		response.addCookie(customerPassword);
+//		final Cookie customerMail = new Cookie("email", email);
+//		response.addCookie(customerMail);
+//		final Cookie customerPassword = new Cookie("password", password);
+//		response.addCookie(customerPassword);
 		
 		// forward to the index page
 		final RequestDispatcher dispatcher = 
